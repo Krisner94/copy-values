@@ -1,0 +1,50 @@
+# Nome do workflow, que aparecerá na aba "Actions" do seu repositório no GitHub.
+name: CI - Build e Teste
+
+# Define os gatilhos que iniciarão este workflow.
+on:
+  # Executa em todo push para a branch 'main'.
+  push:
+    branches: [ "main" ]
+  # Executa em todo pull request direcionado à branch 'main'.
+  pull_request:
+    branches: [ "main" ]
+
+# Define os trabalhos (jobs) que serão executados.
+jobs:
+  # Nome do nosso único job. Você pode ter vários jobs que rodam em paralelo.
+  build-and-test:
+    # O tipo de máquina virtual que o job usará. 'ubuntu-latest' é o padrão para projetos Node.js.
+    runs-on: ubuntu-latest
+
+    # Estratégia de execução. Usaremos uma "matrix" para testar em múltiplas versões do Node.js.
+    strategy:
+      matrix:
+        # Define as versões do Node.js que queremos testar para garantir a compatibilidade.
+        node-version: [18.x, 20.x]
+
+    # Define a sequência de passos que o job executará.
+    steps:
+      # 1. Baixa o código do seu repositório para a máquina virtual.
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      # 2. Instala a versão do Node.js especificada na matrix.
+      - name: Configura o Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          # Habilita o cache do npm para acelerar a instalação de dependências em futuras execuções.
+          cache: 'npm'
+
+      # 3. Instala as dependências. 'npm ci' é mais rápido e seguro para CI do que 'npm install'.
+      - name: Instala as dependências
+        run: npm ci
+
+      # 4. Compila o código TypeScript. Se houver qualquer erro de tipo, o workflow falhará aqui.
+      - name: Compila o projeto
+        run: npm run build
+
+      # 5. Executa os testes. Este passo é crucial para a qualidade do código.
+      - name: Executa os testes
+        run: npm test
