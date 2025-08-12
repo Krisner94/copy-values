@@ -34,13 +34,5 @@
     "@types/jest": "^30.0.0",
     "jest": "^30.0.5",
     "ts-jest": "^29.4.1"
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node",
-    "testMatch": [
-      "**/__tests__/**/*.ts?(x)",
-      "**/?(*.)+(spec|test).ts?(x)"
-    ]
   }
 }
