@@ -1,6 +1,6 @@
 {
   "name": "@rhamakrisner/copy-values",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "",
   "bin": {
     "copyvalues": "./bin/index.js"
