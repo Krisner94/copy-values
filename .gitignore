@@ -1,0 +1,13 @@
+/.idea
+/node_modules
+/dist
+npm-debug.log*
+yarn-error.log
+yarn-debug.log
+/env
+/vmoptions
+.DS_Store
+Thumbs.db
+.env
+.env.local
+.env.*.local

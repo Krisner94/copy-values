@@ -1,0 +1,29 @@
+{
+  "name": "@rhamakrisner/copy-values",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+    "copyvalues": "./bin/index.js"
+  },
+  "homepage": "https://github.com/Krisner94/copy-values#readme",
+  "bugs": {
+    "url": "https://github.com/Krisner94/copy-values/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Krisner94/copy-values.git"
+  },
+  "license": "MIT",
+  "author": "Krisner94",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "clipboardy": "^4.0.0",
+    "copy-paste": "^2.2.0",
+    "js-yaml": "^4.1.0",
+    "yargs": "^18.0.0"
+  }
+}
